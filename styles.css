@@ -58,6 +58,8 @@ footer{padding:26px 4vw;border-top:1px solid var(--line);display:flex;justify-co
 body:not(:has(.artist)){background:url("Assets/Images of shop/background.png") center/cover fixed}
 body:not(:has(.artist)) .grain{display:none}
 .landing-reel,.landing-video{background:transparent}
+body.dark-page{background:url("Assets/Images of shop/background.png") center/cover fixed}
+body.dark-page .grain{display:none}
 @media(max-width:560px){.artist-collage img{min-height:0;transform:none!important}}
 
 /* Mobile layout and a continuous horizontal tattoo conveyor. */
