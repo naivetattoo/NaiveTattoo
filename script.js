@@ -1,16 +1,7 @@
+const tattoos = ['Panther backpiece.png','Heron tattoo.png','Mask tattoo.png','Greyhound tattoo.png','Cat tattoo.png','Burning house tattoo.png','DO01022152 2.jpg','CF360032-CF05-45A3-846C-0F23BA4D587A.jpeg','DO01011075 2.jpg','DO01022183.JPG','DO01022163 2.jpg','IMG_1928.heic','DO01022415.jpg','IMG_0526.jpg','IMG_0321-2.jpg','IMG_0290.jpg','IMG_9064.jpg','IMG_8683.jpg','L1010730.jpg','IMG_8500.JPG','L1010789 (1).JPG','IMG_8490.JPG','L1011045.JPG','L1011028.JPG','IMG_8232.heic','IMG_8035.JPG','IMG_8036.JPG','IMG_8038.JPG','L1010083 2.jpg','L1010365.JPG','L1010943.jpg','IMG_8039.JPG','Snapseed 34.jpg','IMG_8422.heic','IMG_0280 2.jpg','L1010698.JPG'];
+const tattooPath = name => `Assets/Gallery of tattoos/${name}`;
+const label = index => `Tattoo work ${String(index + 1).padStart(2, '0')}`;
+document.querySelectorAll('[data-tattoo-gallery]').forEach(gallery => { gallery.innerHTML = tattoos.map((name, index) => `<button class="piece${index === 0 || index === 4 ? ' tall' : ''}" type="button" data-title="${label(index)}"><img src="${tattooPath(name)}" alt="Tattoo work by Felipe El Bari" loading="lazy"><span>${label(index)}</span></button>`).join(''); });
+document.querySelectorAll('[data-tattoo-conveyor]').forEach(track => { const loop = tattoos.slice(0, 16); track.innerHTML = [...loop, ...loop].map(name => `<img src="${tattooPath(name)}" alt="" loading="lazy">`).join(''); });
 const lightbox = document.querySelector('#lightbox');
-if (lightbox) {
-  const lightboxImage = lightbox.querySelector('img');
-  const lightboxCaption = lightbox.querySelector('p');
-  document.querySelectorAll('.piece').forEach(piece => {
-    piece.addEventListener('click', () => {
-      const image = piece.querySelector('img');
-      lightboxImage.src = image.src;
-      lightboxImage.alt = image.alt;
-      lightboxCaption.textContent = piece.dataset.title;
-      lightbox.showModal();
-    });
-  });
-  lightbox.querySelector('.lightbox-close').addEventListener('click', () => lightbox.close());
-  lightbox.addEventListener('click', event => { if (event.target === lightbox) lightbox.close(); });
-}
+if (lightbox) { const lightboxImage = lightbox.querySelector('img'); const lightboxCaption = lightbox.querySelector('p'); document.querySelectorAll('.piece').forEach(piece => piece.addEventListener('click', () => { const image = piece.querySelector('img'); lightboxImage.src = image.src; lightboxImage.alt = image.alt; lightboxCaption.textContent = piece.dataset.title; lightbox.showModal(); })); lightbox.querySelector('.lightbox-close').addEventListener('click', () => lightbox.close()); lightbox.addEventListener('click', event => { if (event.target === lightbox) lightbox.close(); }); }
